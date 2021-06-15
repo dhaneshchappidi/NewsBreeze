@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#f9f9f9"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NewsBreeze"
+                android:textSize="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true">
+            </TextView>
+            <ImageView
+                android:id="@+id/bookmark"
+                android:layout_gravity="right"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="15dp"
+                android:textSize="18sp"
+                android:background="@drawable/bookmark_background"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_baseline_bookmark_border_24"
+                />
+            <SearchView
+                android:id="@+id/searchview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="Search"
+                android:iconifiedByDefault="false"
+                android:background="@drawable/background"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/title">
+            </SearchView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:layout_below="@+id/searchview">
+            </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
