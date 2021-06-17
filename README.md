@@ -26,4 +26,9 @@ NewsBreeze requires the following permissions:
 - Photos/Media Files    -The app needs access to the device's storage to save representational images, so that you have a good experience even without interenet connectivity.
 - Internet connectivity - This application needs internet connectivity to retrive data from newsapi.org.
 
-<button href='https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu'>Success</button>
+<p align="center">
+<a href='https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu'><img alt='Get it on Google Play' src='<p align="center">
+<a href='https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="50%"/></a>
+</p>' width="50%"/></a>
+</p>
+
