@@ -1,2 +1,2 @@
 # NewsBreeze Android Application
-(res/mipmap-xhdpi/app_icon.png "Logo")
+(https://github.com/dhaneshchappidi/NewsBreeze/blob/master/app/src/main/res/mipmap-xhdpi/app_icon.png "Logo")
