@@ -27,6 +27,6 @@ NewsBreeze requires the following permissions:
 - Internet connectivity - This application needs internet connectivity to retrive data from newsapi.org.
 
 <p align="center">
-<a href='https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu'><img alt='Get it on Google Play' src='https://www.oiml.org/en/ressources/icons/download-button.jpg/image' width="50%"/></a>
+<a href='app-release.apk'><img alt='Download APK' width="100px" height="100px" src='https://www.oiml.org/en/ressources/icons/download-button.jpg/image'/></a>
 </p></a>
 
