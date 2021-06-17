@@ -13,10 +13,10 @@ NewsBreeze is a news application that selects latest and best news from Newsapi.
 
 ## News Categories
    NewsBreeze is having all types of news and headlines from topics like 
-   - bussiness
-   - entertainment
-   - general
-   - health
-   - scince
-   - sports
-   - technology - all in one place
+   - Bussiness
+   - Entertainment
+   - General
+   - Health
+   - Scince
+   - Sports
+   - Technology - all in one place
