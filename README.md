@@ -27,10 +27,39 @@ NewsBreeze requires the following permissions:
 - Photos/Media Files    -The app needs access to the device's storage to save representational images, so that you have a good experience even without interenet connectivity.
 - Internet connectivity - This application needs internet connectivity to retrive data from newsapi.org.
 
-### Libraries
+### Libraries Used
 - [Retrofit](http://square.github.io/retrofit/) For sending network requests and parsing JSON data.
 - [Picasso](https://square.github.io/picasso/) Loading and caching images.
 
+### Screenshots
+</br>
+<div align="center">
+   <table align="center" border="0" >
+  <tr>
+    <td>
+<img width="360"
+src="https://user-images.githubusercontent.com/52503391/122374994-76279080-cf80-11eb-9cc8-1b5339b6da5d.jpg"/>
+       <td><img width="360"
+src="https://user-images.githubusercontent.com/52503391/122375067-86d80680-cf80-11eb-9eaa-ec64ba9be941.jpg"/>
+    </td>
+     <td> <img width="360"
+src="https://user-images.githubusercontent.com/52503391/122375143-97887c80-cf80-11eb-891f-2d0fe48e014d.jpg"/></td>
+  </table>
+  </div>
+</br>
+<div align="center">
+  <table align="center" border="0" >
+  <tr>
+    <td> <img width="360"
+src="https://user-images.githubusercontent.com/52503391/122375218-a53e0200-cf80-11eb-8ae6-7e63ef535727.jpg"/></td>
+     <td> <img width="360"
+src="https://user-images.githubusercontent.com/52503391/122374778-47111f00-cf80-11eb-8a6d-84baaf5146e0.jpg"/></td>
+     <td> <img width="360"
+src="https://user-images.githubusercontent.com/52503391/122374862-58f2c200-cf80-11eb-810c-1fb140356b6b.jpg"/></td>
+  </tr>
+</table>
+  </div>
+</br>
 
 <h3 align="center">Download APK</h3>
 <p align="center">
