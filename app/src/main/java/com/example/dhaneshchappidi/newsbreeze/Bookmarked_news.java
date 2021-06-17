@@ -10,12 +10,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
 import com.example.dhaneshchappidi.newsbreeze.Adapter.Bookmarked_News_Adapter;
-import com.example.dhaneshchappidi.newsbreeze.Adapter.Downloaded_Adapter;
 import com.example.dhaneshchappidi.newsbreeze.model.Down_News_model;
 
 import java.util.ArrayList;
@@ -87,8 +85,13 @@ public class Bookmarked_news extends AppCompatActivity {
                     }
                 } while (cursor.moveToNext());
             }
-            recyclerView.setAdapter(bookmark_adapter);
-            bookmark_adapter.notifyDataSetChanged();
+            try {
+                recyclerView.setAdapter(bookmark_adapter);
+                bookmark_adapter.notifyDataSetChanged();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         else {

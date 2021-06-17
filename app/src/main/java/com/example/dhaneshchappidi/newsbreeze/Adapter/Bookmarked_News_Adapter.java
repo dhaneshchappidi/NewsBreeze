@@ -2,9 +2,6 @@ package com.example.dhaneshchappidi.newsbreeze.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,25 +10,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.example.dhaneshchappidi.newsbreeze.Dateformate;
-import com.example.dhaneshchappidi.newsbreeze.Offline_News;
 import com.example.dhaneshchappidi.newsbreeze.R;
 
 import com.example.dhaneshchappidi.newsbreeze.Second_Activity;
 import com.example.dhaneshchappidi.newsbreeze.model.Down_News_model;
+import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.List;
 
 public class Bookmarked_News_Adapter extends RecyclerView.Adapter<Bookmarked_News_Adapter.myHolder> {
@@ -66,25 +52,9 @@ public class Bookmarked_News_Adapter extends RecyclerView.Adapter<Bookmarked_New
         holder.progressBar.setVisibility(View.GONE);
         holder.Save.setVisibility(View.GONE);
         try {
-            RequestOptions requestOptions = new RequestOptions();
-            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
-            requestOptions.centerCrop();
 
-            Glide.with(context)
+            Picasso.with(context)
                     .load(urlToImage)
-                    .apply(requestOptions)
-                    .listener(new RequestListener<Drawable>() {
-                        @Override
-                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            return false;
-                        }
-
-                        @Override
-                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                            return false;
-                        }
-                    })
-                    .transition(DrawableTransitionOptions.withCrossFade())
                     .into(holder.NewsImage);
         }
         catch (Exception e){}

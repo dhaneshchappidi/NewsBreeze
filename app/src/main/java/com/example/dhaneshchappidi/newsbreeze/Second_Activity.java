@@ -11,15 +11,11 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -30,11 +26,12 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class Second_Activity extends AppCompatActivity {
-    ImageView newsimage,Share;
+    ImageView newsimage,Share,Bookmark;
     TextView title,description,Date,Author,Content;
     ImageView backbutton;
     Button more,Save;
     String URL;
+    DBHelper mydb;
 
     private static final int PERMISSION_REQEST_CODE =1 ;
     @Override
@@ -64,8 +61,8 @@ public class Second_Activity extends AppCompatActivity {
         final String Url = intent.getStringExtra("url");
         final String Img = intent.getStringExtra("img");
         final String Title = intent.getStringExtra("title");
-        String Descriptioni = intent.getStringExtra("description");
-        String date = intent.getStringExtra("date");
+        final String Descriptioni = intent.getStringExtra("description");
+        final String date = intent.getStringExtra("date");
         final String author=intent.getStringExtra("author");
         final String content=intent.getStringExtra("content");
         URL=intent.getStringExtra("url");
@@ -79,6 +76,8 @@ public class Second_Activity extends AppCompatActivity {
         backbutton=(ImageView) findViewById(R.id.back_button);
         Author=(TextView)findViewById(R.id.author);
         Content=(TextView)findViewById(R.id.content);
+        Bookmark=(ImageView)findViewById(R.id.bookmark);
+        mydb=new DBHelper(this);
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,10 +100,8 @@ public class Second_Activity extends AppCompatActivity {
         Author.setText("-"+author);
         Content.setText(content);
         description.setText(Descriptioni);
-        Glide.with(this)
+        Picasso.with(this)
                 .load(Img)
-                .centerCrop()
-                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(newsimage);
         String date_formate=Dateformate.Dateformate(date);
         Date.setText(date_formate);
@@ -114,6 +111,13 @@ public class Second_Activity extends AppCompatActivity {
                 Second_Activity.super.onBackPressed();
             }
         });
+        Bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mydb.insertNews(author,Title,Descriptioni,Url,Img,date,content,null,"Bookmark");
+                Toast.makeText(Second_Activity.this,"Bookmarked successfully",Toast.LENGTH_SHORT).show();
+            }
+        });
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +125,6 @@ public class Second_Activity extends AppCompatActivity {
                     requestPermissions(new String[]{
                             Manifest.permission.WRITE_EXTERNAL_STORAGE
                     },PERMISSION_REQEST_CODE);
-
                 }
                 Picasso.with(getApplicationContext())
                         .load(Img)
@@ -135,6 +138,8 @@ public class Second_Activity extends AppCompatActivity {
                                       String name = date_time + ".PNG";
                                       File file = new File(rootdata, name);
                                       OutputStream out;
+                                      mydb.insertNews(author,Title,Descriptioni,Url,Img,date,content,date_time,"Download");
+                                      Toast.makeText(Second_Activity.this,"News downloaded",Toast.LENGTH_LONG).show();
                                       try {
                                           out=new FileOutputStream(file);
                                           bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);

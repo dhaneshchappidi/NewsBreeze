@@ -10,7 +10,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
@@ -88,8 +87,13 @@ public class Downloaded_News extends AppCompatActivity {
                     }
                 } while (cursor.moveToNext());
             }
-            recyclerView.setAdapter(downloaded_adapter);
-            downloaded_adapter.notifyDataSetChanged();
+            try {
+                recyclerView.setAdapter(downloaded_adapter);
+                downloaded_adapter.notifyDataSetChanged();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         else {
