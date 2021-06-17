@@ -37,11 +37,11 @@ NewsBreeze requires the following permissions:
    <table align="center" border="0" >
   <tr>
     <td>
-<img width="260" height="300"
+<img width="260" height="400"
 src="https://user-images.githubusercontent.com/52503391/122374994-76279080-cf80-11eb-9cc8-1b5339b6da5d.jpg"/>
-       <td> <img width="260" height="300"
+       <td> <img width="260" height="400"
 src="https://user-images.githubusercontent.com/52503391/122375143-97887c80-cf80-11eb-891f-2d0fe48e014d.jpg"/></td>
-       <td><img width="260" height="300"
+       <td><img width="260" height="400"
 src="https://user-images.githubusercontent.com/52503391/122375067-86d80680-cf80-11eb-9eaa-ec64ba9be941.jpg"/>
     </td>
   </table>
@@ -50,11 +50,11 @@ src="https://user-images.githubusercontent.com/52503391/122375067-86d80680-cf80-
 <div align="center">
   <table align="center" border="0" >
   <tr>
-    <td> <img width="260" height="300"
+    <td> <img width="260" height="400"
 src="https://user-images.githubusercontent.com/52503391/122375218-a53e0200-cf80-11eb-8ae6-7e63ef535727.jpg"/></td>
-     <td> <img width="260" height="300"
+     <td> <img width="260" height="400"
 src="https://user-images.githubusercontent.com/52503391/122374778-47111f00-cf80-11eb-8a6d-84baaf5146e0.jpg"/></td>
-     <td> <img width="260" height="300"
+     <td> <img width="260" height="400"
 src="https://user-images.githubusercontent.com/52503391/122374862-58f2c200-cf80-11eb-810c-1fb140356b6b.jpg"/></td>
   </tr>
 </table>
