@@ -1,9 +1,9 @@
-# NewsBreeze Android Application
+## NewsBreeze Android Application
 <p align="center">
 <img align="center" alt="logo" width="200px" height="200px" src="app/src/main/res/mipmap-xhdpi/app_icon.png" /></p>
 NewsBreeze is a news application that selects latest and best news from Newsapi.org and summarises them to present in a short-summarized format. News is sourced from various categories and various souces, making sure that you always get the best.
 
-## Features
+### Features
 
 - **Bookmarks**- Save News you dont't have time to read so that you can come back to them later.
 - **Download**  - Download your favorite News while on Internet and enjoy your reading later without internet connection.
@@ -12,7 +12,7 @@ NewsBreeze is a news application that selects latest and best news from Newsapi.
 - **Share**   - If you like a news, share it with your friends using whatsapp, email or message & more.
 
 
-## News Categories
+### News Categories
    NewsBreeze is having all types of news and headlines from topics like 
    - Bussiness
    - Entertainment
@@ -22,7 +22,7 @@ NewsBreeze is a news application that selects latest and best news from Newsapi.
    - Sports
    - Technology - all in one place
 
-## Permissions
+### Permissions
 NewsBreeze requires the following permissions:
 - Photos/Media Files    -The app needs access to the device's storage to save representational images, so that you have a good experience even without interenet connectivity.
 - Internet connectivity - This application needs internet connectivity to retrive data from newsapi.org.
