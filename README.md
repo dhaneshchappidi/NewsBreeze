@@ -39,11 +39,11 @@ NewsBreeze requires the following permissions:
     <td>
 <img width="360"
 src="https://user-images.githubusercontent.com/52503391/122374994-76279080-cf80-11eb-9cc8-1b5339b6da5d.jpg"/>
+       <td> <img width="360"
+src="https://user-images.githubusercontent.com/52503391/122375143-97887c80-cf80-11eb-891f-2d0fe48e014d.jpg"/></td>
        <td><img width="360"
 src="https://user-images.githubusercontent.com/52503391/122375067-86d80680-cf80-11eb-9eaa-ec64ba9be941.jpg"/>
     </td>
-     <td> <img width="360"
-src="https://user-images.githubusercontent.com/52503391/122375143-97887c80-cf80-11eb-891f-2d0fe48e014d.jpg"/></td>
   </table>
   </div>
 </br>
