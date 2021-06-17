@@ -27,6 +27,10 @@ NewsBreeze requires the following permissions:
 - Internet connectivity - This application needs internet connectivity to retrive data from newsapi.org.
 
 <p align="center">
+## Download APK
+   </p>
+<p align="center">
 <a href='app-release.apk'><img alt='Download APK' width="100px" height="100px" src='https://www.oiml.org/en/ressources/icons/download-button.jpg/image'/></a>
 </p></a>
+
 
