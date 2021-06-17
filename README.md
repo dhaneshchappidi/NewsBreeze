@@ -37,7 +37,7 @@ NewsBreeze requires the following permissions:
    <table align="center" border="0" >
   <tr>
     <td>
-<img width="360"
+<img width="160" height="500"
 src="https://user-images.githubusercontent.com/52503391/122374994-76279080-cf80-11eb-9cc8-1b5339b6da5d.jpg"/>
        <td> <img width="360"
 src="https://user-images.githubusercontent.com/52503391/122375143-97887c80-cf80-11eb-891f-2d0fe48e014d.jpg"/></td>
