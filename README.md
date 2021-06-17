@@ -1,2 +1,2 @@
 # NewsBreeze Android Application
-!(./app_icon.png "Logo")
+!(/app/src/main/res/mipmap-xhdpi/app_icon.png "Logo")
