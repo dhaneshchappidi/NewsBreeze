@@ -9,3 +9,14 @@ NewsBreeze is a news application that selects latest and best news from Newsapi.
 - Search    -  The latest news list has a search by title feature. Search lets you find any news by simply typing in a keyword in the search box. Easy access to your favorite topics of intrest via the search option
 - Read full article- If you need full story of an article just click on the more button then you will be redirected to the source url.
 - Share   - If you like a news, share it with your friends using whatsapp, email or message & more.
+
+
+## News Categories
+   NewsBreeze is having all types of news and headlines from topics like 
+   - bussiness
+   - entertainment
+   - general
+   - health
+   - scince
+   - sports
+   - technology - all in one place
