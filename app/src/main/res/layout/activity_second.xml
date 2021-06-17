@@ -90,6 +90,16 @@
                 android:layout_marginTop="5dp"
                 android:textColor="#ffffff"
                 />
+            <ImageView
+                android:id="@+id/share_img"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@+id/save"
+                android:src="@drawable/share_img"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                >
+            </ImageView>
             <TextView
                 android:id="@+id/desc"
                 android:layout_width="match_parent"

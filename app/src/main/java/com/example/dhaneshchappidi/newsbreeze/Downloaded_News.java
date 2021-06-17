@@ -9,6 +9,9 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
 import com.example.dhaneshchappidi.newsbreeze.Adapter.Downloaded_Adapter;
@@ -24,7 +27,8 @@ public class Downloaded_News extends AppCompatActivity {
     private List<Down_News_model> articles = new ArrayList<>();
     DBHelper dbHelper;
     SearchView searchView;
-    Downloaded_Adapter bookmark_adapter;
+    ImageView Back_Button;
+    Downloaded_Adapter downloaded_adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,13 @@ public class Downloaded_News extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
+        Back_Button=(ImageView) findViewById(R.id.back_button);
+        Back_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Downloaded_News.super.onBackPressed();
+            }
+        });
         loadbookmarks("%");
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView=(SearchView)findViewById(R.id.searchview);
@@ -73,12 +84,12 @@ public class Downloaded_News extends AppCompatActivity {
                     String type=cursor.getString(cursor.getColumnIndex("type"));
                     if(type.equals("Download")) {
                         articles.add(new Down_News_model(author, title, description, url, urlToImage, publishedAt, content, image, type));
-                        bookmark_adapter = new Downloaded_Adapter(Downloaded_News.this, articles);
+                        downloaded_adapter = new Downloaded_Adapter(Downloaded_News.this, articles);
                     }
                 } while (cursor.moveToNext());
             }
-            recyclerView.setAdapter(bookmark_adapter);
-            bookmark_adapter.notifyDataSetChanged();
+            recyclerView.setAdapter(downloaded_adapter);
+            downloaded_adapter.notifyDataSetChanged();
         }
 
         else {
@@ -96,13 +107,13 @@ public class Downloaded_News extends AppCompatActivity {
                     if(type.equals("Download")) {
                         if (title.contains(keyword) || description.contains(keyword)) {
                             articles.add(new Down_News_model(author, title, description, url, urlToImage, publishedAt, content, image, type));
-                            bookmark_adapter = new Downloaded_Adapter(Downloaded_News.this, articles);
+                            downloaded_adapter = new Downloaded_Adapter(Downloaded_News.this, articles);
                         }
                     }
                 }while (cursor.moveToNext());
             }
-            recyclerView.setAdapter(bookmark_adapter);
-            bookmark_adapter.notifyDataSetChanged();
+            recyclerView.setAdapter(downloaded_adapter);
+            downloaded_adapter.notifyDataSetChanged();
         }
     }
 

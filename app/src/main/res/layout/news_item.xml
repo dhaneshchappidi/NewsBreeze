@@ -104,10 +104,19 @@
                 android:text="Save"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
-                android:layout_marginRight="45dp"
+                android:layout_marginRight="70dp"
                 android:textColor="#ffffff"
                 >
             </Button>
+                <ImageView
+                    android:id="@+id/share_img"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/share_img"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    >
+                </ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

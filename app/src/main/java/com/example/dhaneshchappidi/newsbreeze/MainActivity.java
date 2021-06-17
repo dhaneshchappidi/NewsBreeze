@@ -13,8 +13,12 @@ import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,18 +35,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final int PERMISSION_REQEST_CODE =1 ;
     Typeface tf;
     TextView title;
     SearchView searchView;
-    ImageView Bookmark;
+    ImageView Bookmark,download;
     private NewsAdapter newsAdapter;
+    ProgressBar progressBar;
     public static final String API_KEY = "e4f293b3fbed47b4a376cb44d5b654ce";
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private List<Article> articles = new ArrayList<>();
     private String TAG = MainActivity.class.getSimpleName();
+    Spinner Spinner;
+    String[] category = {"business","entertainment","general","health","scince","sports","technology"};
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -69,14 +76,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         title=(TextView)findViewById(R.id.title);
         Bookmark=(ImageView)findViewById(R.id.bookmark);
+        download=(ImageView)findViewById(R.id.downloaded);
         tf=Typeface.createFromAsset(getAssets(), "METALORD.TTF");
         title.setTypeface(tf);
+        Spinner=(Spinner)findViewById(R.id.spinner);
+        Spinner.setOnItemSelectedListener(this);
+        progressBar=(ProgressBar)findViewById(R.id.progress);
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,category);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner.setAdapter(aa);
 
         Bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, Downloaded_News.class);
+                Intent intent=new Intent(MainActivity.this, Bookmarked_news.class);
                 startActivity(intent);
+            }
+        });
+        download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(MainActivity.this,Downloaded_News.class);
+                startActivity(i);
             }
         });
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -85,13 +106,13 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                LoadJson(s);
+                LoadJson(s,Spinner.getSelectedItem().toString());
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                LoadJson(s);
+                LoadJson(s,Spinner.getSelectedItem().toString());
                 return false;
             }
         });
@@ -100,15 +121,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
-        LoadJson("");
+        LoadJson("",Spinner.getSelectedItem().toString());
     }
-    public void LoadJson(String keyword){
+    public void LoadJson(String keyword,String catagory){
         ApiInterface apiInterface = Apiclient.getApiClient().create(ApiInterface.class);
 
         String country ="in";
 
         Call<News> call;
-        call=apiInterface.getNews(keyword,country,API_KEY,"business");
+        call=apiInterface.getNews(keyword,country,API_KEY,catagory,"publishedAt");
         call.enqueue(new Callback<News>() {
             @Override
             public void onResponse(Call<News> call, Response<News> response) {
@@ -121,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Integer total=response.body().getTotalResults();
                     newsAdapter = new NewsAdapter(articles, MainActivity.this,total);
+                    progressBar.setVisibility(View.GONE);
                     recyclerView.setAdapter(newsAdapter);
                     newsAdapter.notifyDataSetChanged();
                     initListener();
@@ -151,5 +173,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Toast.makeText(MainActivity.this,category[i]+ " NEWS",Toast.LENGTH_SHORT).show();
+        LoadJson("",category[i]);
+        progressBar.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

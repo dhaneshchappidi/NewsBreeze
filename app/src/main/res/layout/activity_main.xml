@@ -28,6 +28,17 @@
                 android:layout_alignParentLeft="true">
             </TextView>
             <ImageView
+                android:id="@+id/downloaded"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="15dp"
+                android:textSize="18sp"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@+id/bookmark"
+                android:background="@drawable/bookmark_background"
+                android:src="@drawable/download_icon"
+                />
+            <ImageView
                 android:id="@+id/bookmark"
                 android:layout_gravity="right"
                 android:layout_width="60dp"
@@ -48,13 +59,38 @@
                 android:layout_marginTop="20dp"
                 android:layout_below="@+id/title">
             </SearchView>
+            <Spinner
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:id="@+id/spinner"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/spinner_background"
+                android:layout_below="@+id/searchview">
+            </Spinner>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/spinner"
+                android:src="@drawable/spinner_down"
+                android:layout_marginTop="17dp"
+                android:layout_below="@+id/searchview">
+            </ImageView>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:layout_below="@+id/searchview">
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/spinner">
             </androidx.recyclerview.widget.RecyclerView>
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/spinner"
+                android:layout_marginTop="50dp"
+                android:id="@+id/progress">
+            </ProgressBar>
+
 </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>

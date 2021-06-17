@@ -12,7 +12,9 @@ public interface ApiInterface {
             @Query("q") String keyword,
             @Query("country") String country ,
             @Query("apiKey") String apiKey,
-            @Query("category") String category
+            @Query("category") String category,
+            @Query("sortBy") String sortBy
+
 
     );
 }

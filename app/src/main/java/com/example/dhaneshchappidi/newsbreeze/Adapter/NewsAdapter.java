@@ -2,8 +2,10 @@ package com.example.dhaneshchappidi.newsbreeze.Adapter;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -128,6 +130,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
             }
         });
+        holder.Share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Intent.ACTION_SEND);
+                i.setType("text/plan");
+                i.putExtra(Intent.EXTRA_SUBJECT,model.getTitle());
+                String body=model.getUrl()+"\n" +"-NewsBreeze"+"\n";
+                i.putExtra(Intent.EXTRA_TEXT,body);
+                context.startActivity(Intent.createChooser(i,"Share with:"));
+            }
+        });
         holder.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,7 +204,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     }
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView title, description,time;
-        ImageView newsimage;
+        ImageView newsimage,Share;
         ProgressBar progressBar;
         OnItemClickListener onItemClickListener;
         Button save;
@@ -207,6 +220,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             bookmark=itemView.findViewById(R.id.save);
             save=itemView.findViewById(R.id.savetomemory);
             this.onItemClickListener=onItemClickListener;
+            Share=itemView.findViewById(R.id.share_img);
         }
 
         @Override

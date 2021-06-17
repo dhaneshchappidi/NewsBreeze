@@ -30,7 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class Second_Activity extends AppCompatActivity {
-    ImageView newsimage;
+    ImageView newsimage,Share;
     TextView title,description,Date,Author,Content;
     ImageView backbutton;
     Button more,Save;
@@ -63,13 +63,14 @@ public class Second_Activity extends AppCompatActivity {
         Intent intent = getIntent();
         final String Url = intent.getStringExtra("url");
         final String Img = intent.getStringExtra("img");
-        String Title = intent.getStringExtra("title");
+        final String Title = intent.getStringExtra("title");
         String Descriptioni = intent.getStringExtra("description");
         String date = intent.getStringExtra("date");
         final String author=intent.getStringExtra("author");
         final String content=intent.getStringExtra("content");
         URL=intent.getStringExtra("url");
         more=(Button)findViewById(R.id.More);
+        Share=(ImageView)findViewById(R.id.share_img);
         newsimage=(ImageView)findViewById(R.id.image);
         title=(TextView)findViewById(R.id.title);
         description=(TextView)findViewById(R.id.desc);
@@ -84,6 +85,16 @@ public class Second_Activity extends AppCompatActivity {
                 Uri uri=Uri.parse(URL);
                 Intent intent1=new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(intent1);
+            }
+        });
+        Share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Intent.ACTION_SEND);
+                i.setType("text/plan");
+                i.putExtra(Intent.EXTRA_SUBJECT,Title);
+                String body=Url+"\n" +"-NewsBreeze"+"\n";
+                startActivity(Intent.createChooser(i,"Share with:"));
             }
         });
         title.setText(Title);

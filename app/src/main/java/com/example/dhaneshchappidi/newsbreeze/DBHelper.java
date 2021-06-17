@@ -56,7 +56,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert("savedlist", null, contentValues);
         return true;
     }
-
     public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "select * from savedlist", null );
