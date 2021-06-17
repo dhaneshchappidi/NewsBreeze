@@ -20,3 +20,8 @@ NewsBreeze is a news application that selects latest and best news from Newsapi.
    - Scince
    - Sports
    - Technology - all in one place
+
+## Permissions
+NewsBreeze requires the following permissions:
+- Photos/Media Files    -The app needs access to the device's storage to save representational images, so that you have a good experience even without interenet connectivity.
+- Internet connectivity - This application needs internet connectivity to retrive data from newsapi.org.
