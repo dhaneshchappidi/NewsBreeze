@@ -29,7 +29,7 @@ NewsBreeze requires the following permissions:
 
 ### Libraries
 - [Retrofit](http://square.github.io/retrofit/) For sending network requests and parsing JSON data.
-- [Glide](https://github.com/bumptech/glide) Loading and caching images.
+- [Picasso](https://square.github.io/picasso/) Loading and caching images.
 
 
 <h3 align="center">Download APK</h3>
