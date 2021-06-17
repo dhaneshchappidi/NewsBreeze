@@ -1,5 +1,6 @@
 # NewsBreeze Android Application
-<img align="center" alt="logo" width="200px" height="200px" src="app/src/main/res/mipmap-xhdpi/app_icon.png" />
+<p align="center">
+<img align="center" alt="logo" width="200px" height="200px" src="app/src/main/res/mipmap-xhdpi/app_icon.png" /></p>
 NewsBreeze is a news application that selects latest and best news from Newsapi.org and summarises them to present in a short-summarized format. News is sourced from various categories and various souces, making sure that you always get the best.
 
 ## Features
