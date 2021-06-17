@@ -26,6 +26,12 @@ NewsBreeze is a news application that selects latest and best news from Newsapi.
 NewsBreeze requires the following permissions:
 - Photos/Media Files    -The app needs access to the device's storage to save representational images, so that you have a good experience even without interenet connectivity.
 - Internet connectivity - This application needs internet connectivity to retrive data from newsapi.org.
+
+### Libraries
+- [Retrofit](http://square.github.io/retrofit/) For sending network requests and parsing JSON data.
+- [Glide](https://github.com/bumptech/glide) Loading and caching images.
+
+
 <h3 align="center">Download APK</h3>
 <p align="center">
 <a href='https://github.com/dhaneshchappidi/NewsBreeze/raw/master/app-release.apk'><img alt='Download APK' width="100px" height="100px" src='https://www.oiml.org/en/ressources/icons/download-button.jpg/image'/></a>
