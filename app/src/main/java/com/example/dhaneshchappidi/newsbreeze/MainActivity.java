@@ -2,10 +2,12 @@ package com.example.dhaneshchappidi.newsbreeze;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +36,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static androidx.core.app.ActivityCompat.requestPermissions;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final int PERMISSION_REQEST_CODE =1 ;
@@ -122,6 +126,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
         LoadJson("",Spinner.getSelectedItem().toString());
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+            },PERMISSION_REQEST_CODE);
+
+        }
     }
     public void LoadJson(String keyword,String catagory){
         ApiInterface apiInterface = Apiclient.getApiClient().create(ApiInterface.class);

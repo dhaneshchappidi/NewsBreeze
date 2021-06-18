@@ -79,7 +79,6 @@
                     android:layout_marginTop="40dp"
                     android:text="Description"
                     android:textSize="20dp"
-                    android:layout_below="@+id/save"
                     android:fontFamily="sans-serif-black" />
                 <TextView
                     android:id="@+id/content"
