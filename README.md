@@ -46,7 +46,7 @@ NewsBreeze requires the following permissions:
 ### Screenshots
 | Main Screen | Full article |  Categories |
 |:-:|:-:|:-:|
-|![1](https://user-images.githubusercontent.com/52503391/124110016-667e7080-da85-11eb-924a-9893beb06636.JPG) | ![2](https://user-images.githubusercontent.com/52503391/124110021-68483400-da85-11eb-817c-89184397d149.JPG) | ![3](https://user-images.githubusercontent.com/52503391/124110027-69796100-da85-11eb-9103-8a8a41cbdf61.JPG) |
+|![1](https://user-images.githubusercontent.com/52503391/124110996-70ed3a00-da86-11eb-87fe-e8381062da79.JPG) | ![2](https://user-images.githubusercontent.com/52503391/124110021-68483400-da85-11eb-817c-89184397d149.JPG) | ![3](https://user-images.githubusercontent.com/52503391/124110027-69796100-da85-11eb-9103-8a8a41cbdf61.JPG) |
 | Share | Downloaded News |  Bookmarks |
 | ![4](https://user-images.githubusercontent.com/52503391/124110033-6b432480-da85-11eb-9243-68bd53d6ade9.JPG) | ![5](https://user-images.githubusercontent.com/52503391/124110041-6c745180-da85-11eb-8a3e-81b7a501081d.JPG) | ![6](https://user-images.githubusercontent.com/52503391/124110044-6d0ce800-da85-11eb-9d92-4ede7bb99bf6.JPG)
  |
