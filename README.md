@@ -34,6 +34,13 @@ NewsBreeze requires the following permissions:
 - **Room** is a database layer on top of an SQLite database.
 - **Lifecycle**
 
+###Architecture
+<img src="https://user-images.githubusercontent.com/52503391/122374994-76279080-cf80-11eb-9cc8-1b5339b6da5d.jpg"/>
+**View** - Activity/Fragment with UI-specific logics only.
+**ViewModel** - It keeps the logic away from View layer, provides data streams for UI and handle user interactions. It servers as a link between the Model and the View.
+**Model** - This layer is responsible for the abstraction of the data sources. Model and ViewModel work together to get and save the data.
+
+
 ### Screenshots
 </br>
 <div align="center">
