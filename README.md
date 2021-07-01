@@ -53,7 +53,7 @@ NewsBreeze requires the following permissions:
 
 <h3 align="center">Download APK</h3>
 <p align="center">
-<a href='https://github.com/dhaneshchappidi/NewsBreeze/raw/master/app-release.apk'><img alt='Download APK' width="100px" height="100px" src='https://www.oiml.org/en/ressources/icons/download-button.jpg/image'/></a>
+<a href='https://github.com/dhaneshchappidi/NewsBreeze/raw/master/app/release/app-release.apk'><img alt='Download APK' width="100px" height="100px" src='https://www.oiml.org/en/ressources/icons/download-button.jpg/image'/></a>
 </p></a>
 
 
