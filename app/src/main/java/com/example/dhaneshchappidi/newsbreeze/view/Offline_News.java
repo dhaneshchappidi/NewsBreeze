@@ -1,4 +1,4 @@
-package com.example.dhaneshchappidi.newsbreeze;
+package com.example.dhaneshchappidi.newsbreeze.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.dhaneshchappidi.newsbreeze.Dateformate;
+import com.example.dhaneshchappidi.newsbreeze.R;
 
 import java.io.File;
 
@@ -61,7 +64,7 @@ public class Offline_News extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
-        String date_formate=Dateformate.Dateformate(date);
+        String date_formate= Dateformate.Dateformate(date);
         Date.setText(date_formate);
         File rootdata=getApplicationContext().getExternalFilesDir(null);
         final File name = new File(rootdata.toString()+"/"+ image + ".PNG");

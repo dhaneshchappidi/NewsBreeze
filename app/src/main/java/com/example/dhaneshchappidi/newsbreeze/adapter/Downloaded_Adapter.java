@@ -1,4 +1,4 @@
-package com.example.dhaneshchappidi.newsbreeze.Adapter;
+package com.example.dhaneshchappidi.newsbreeze.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,20 +14,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dhaneshchappidi.newsbreeze.Dateformate;
-import com.example.dhaneshchappidi.newsbreeze.Offline_News;
 import com.example.dhaneshchappidi.newsbreeze.R;
-
-import com.example.dhaneshchappidi.newsbreeze.model.Down_News_model;
+import com.example.dhaneshchappidi.newsbreeze.model.News;
+import com.example.dhaneshchappidi.newsbreeze.view.Offline_News;
 
 import java.io.File;
 import java.util.List;
 
 public class Downloaded_Adapter extends RecyclerView.Adapter<Downloaded_Adapter.myHolder> {
     Context context;
-    List<Down_News_model> bookmarked;
-    public Downloaded_Adapter(Context context, List<Down_News_model> bookmarked){
+    List<News> downloaded_news;
+    public Downloaded_Adapter(Context context, List<News> downloaded_news){
         this.context=context;
-        this.bookmarked=bookmarked;
+        this.downloaded_news=downloaded_news;
     }
 
     @NonNull
@@ -38,18 +37,18 @@ public class Downloaded_Adapter extends RecyclerView.Adapter<Downloaded_Adapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Downloaded_Adapter.myHolder holder, int position) {
-        final String News_title=bookmarked.get(position).getTitle();
-        final String author = bookmarked.get(position).getAuthor();
-        final String description = bookmarked.get(position).getDescription();
-        final String url = bookmarked.get(position).getUrl();
-        final String urlToImage = bookmarked.get(position).getUrlToImage();
-        final String publishedAt = bookmarked.get(position).getPublishedAt();
-        final String content = bookmarked.get(position).getContent();
-        final String image=bookmarked.get(position).getImage();
+    public void onBindViewHolder(@NonNull myHolder holder, int position) {
+        final String News_title=downloaded_news.get(position).getTitle();
+        final String author = downloaded_news.get(position).getAuthor();
+        final String description = downloaded_news.get(position).getDescription();
+        final String url = downloaded_news.get(position).getUrl();
+        final String urlToImage = downloaded_news.get(position).getUrlToImage();
+        final String publishedAt = downloaded_news.get(position).getPublishedAt();
+        final String content = downloaded_news.get(position).getContent();
+        final String image=downloaded_news.get(position).getImage();
         File rootdata=context.getApplicationContext().getExternalFilesDir(null);
         final File name = new File(rootdata.toString()+"/"+ image + ".PNG");
-        final String type=bookmarked.get(position).getType();
+        final String type=downloaded_news.get(position).getType();
         String date_formate= Dateformate.Dateformate(publishedAt);
         holder.Title.setText(News_title);
         holder.Time.setText(date_formate);
@@ -75,7 +74,7 @@ public class Downloaded_Adapter extends RecyclerView.Adapter<Downloaded_Adapter.
 
     @Override
     public int getItemCount() {
-        return bookmarked.size();
+        return downloaded_news.size();
     }
     class myHolder extends RecyclerView.ViewHolder{
         ImageView NewsImage;

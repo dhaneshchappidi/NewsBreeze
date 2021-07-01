@@ -1,44 +1,103 @@
 package com.example.dhaneshchappidi.newsbreeze.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-import java.util.List;
-
+@Entity(tableName = "News_table")
 public class News {
-    @SerializedName("status")
-    @Expose
-    private String status;
+    @PrimaryKey(autoGenerate = true)
+    int id;
+    String author; String title; String description;String url;String urlToImage;String publishedAt;String content;String image;String type;
 
-    @SerializedName("totalResults")
-    @Expose
-    private Integer totalResults;
-
-    @SerializedName("articles")
-    @Expose
-    private List<Article> articles;
-
-    public String getStatus() {
-        return status;
+    public News(String author, String title, String description, String url, String urlToImage, String publishedAt, String content, String image, String type) {
+        this.author = author;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.urlToImage = urlToImage;
+        this.publishedAt = publishedAt;
+        this.content = content;
+        this.image = image;
+        this.type = type;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Integer getTotalResults() {
-        return totalResults;
+    public int getId() {
+        return id;
     }
 
-    public void setTotalResults(Integer totalResults) {
-        this.totalResults = totalResults;
+    public String getAuthor() {
+        return author;
     }
 
-    public List<Article> getArticles() {
-        return articles;
+    public String getTitle() {
+        return title;
     }
 
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
+    public String getDescription() {
+        return description;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getUrlToImage() {
+        return urlToImage;
+    }
+
+    public String getPublishedAt() {
+        return publishedAt;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setUrlToImage(String urlToImage) {
+        this.urlToImage = urlToImage;
+    }
+
+    public void setPublishedAt(String publishedAt) {
+        this.publishedAt = publishedAt;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

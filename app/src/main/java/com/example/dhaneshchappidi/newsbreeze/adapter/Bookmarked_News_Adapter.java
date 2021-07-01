@@ -1,4 +1,4 @@
-package com.example.dhaneshchappidi.newsbreeze.Adapter;
+package com.example.dhaneshchappidi.newsbreeze.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,19 +11,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.dhaneshchappidi.newsbreeze.Dateformate;
 import com.example.dhaneshchappidi.newsbreeze.R;
-
-import com.example.dhaneshchappidi.newsbreeze.Second_Activity;
-import com.example.dhaneshchappidi.newsbreeze.model.Down_News_model;
+import com.example.dhaneshchappidi.newsbreeze.model.News;
+import com.example.dhaneshchappidi.newsbreeze.view.Second_Activity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class Bookmarked_News_Adapter extends RecyclerView.Adapter<Bookmarked_News_Adapter.myHolder> {
     Context context;
-    List<Down_News_model> bookmarked;
-    public Bookmarked_News_Adapter(Context context, List<Down_News_model> bookmarked){
+    List<News> bookmarked;
+    public Bookmarked_News_Adapter(Context context, List<News> bookmarked){
         this.context=context;
         this.bookmarked=bookmarked;
     }

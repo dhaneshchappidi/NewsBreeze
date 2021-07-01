@@ -1,6 +1,7 @@
-package com.example.dhaneshchappidi.newsbreeze.Adapter;
+package com.example.dhaneshchappidi.newsbreeze.adapter;
 
 import android.Manifest;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,11 +20,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.dhaneshchappidi.newsbreeze.DBHelper;
+
 import com.example.dhaneshchappidi.newsbreeze.Dateformate;
 import com.example.dhaneshchappidi.newsbreeze.R;
 import com.example.dhaneshchappidi.newsbreeze.model.Article;
+import com.example.dhaneshchappidi.newsbreeze.model.News;
+import com.example.dhaneshchappidi.newsbreeze.viewmodel.ViewModel;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -41,19 +46,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     Integer total;
     OnItemClickListener onItemClickListener;
     public List<Article> saved;
-    DBHelper mydb;
     private static final int PERMISSION_REQEST_CODE =1 ;
+    Application application;
 
-    public NewsAdapter(List<Article> articles, Context context,Integer total) {
+    public NewsAdapter(List<Article> articles, Context context) {
         this.articles = articles;
         this.context = context;
-        this.total=total;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        mydb=new DBHelper(context);
         View view = LayoutInflater.from(context).inflate(R.layout.news_item, parent, false);
         return new MyViewHolder(view, onItemClickListener);
     }
@@ -95,9 +98,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             @Override
             public void onClick(View view) {
                     holder.bookmark.setBackgroundResource(R.drawable.bookmarked);
-
-                mydb.insertNews(model.getAuthor(),model.getTitle(),model.getDescription(),model.getUrl(),model.getUrlToImage(),model.getPublishedAt(),model.getContent(),null,"Bookmark");
-                Toast.makeText(context,"Bookmarked successfully",Toast.LENGTH_SHORT).show();
+                News news=new News(model.getAuthor(),model.getTitle(),model.getDescription(),model.getUrl(),model.getUrlToImage(),model.getPublishedAt(),model.getContent(),null,"Bookmark");
+                holder.newsViewMode.insert(news);
+                Toast.makeText(context,"Added successfully",Toast.LENGTH_LONG).show();
 
             }
         });
@@ -120,7 +123,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
                             Manifest.permission.WRITE_EXTERNAL_STORAGE
 
                     },PERMISSION_REQEST_CODE);
-
                 }
                 Picasso.with(context)
                         .load(model.getUrlToImage())
@@ -134,7 +136,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
                                       String name = date_time + ".PNG";
                                       File file = new File(rootdata, name);
                                       OutputStream out;
-                                      mydb.insertNews(model.getAuthor(),model.getTitle(),model.getDescription(),model.getUrl(),model.getUrlToImage(),model.getPublishedAt(),model.getContent(),date_time,"Download");
+                                      News news=new News(model.getAuthor(),model.getTitle(),model.getDescription(),model.getUrl(),model.getUrlToImage(),model.getPublishedAt(),model.getContent(),date_time,"Download");
+                                      holder.newsViewMode.insert(news);
                                       Toast.makeText(context,"News downloaded",Toast.LENGTH_LONG).show();
                                       try {
                                           out=new FileOutputStream(file);
@@ -146,7 +149,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
                                           ex.printStackTrace();
                                       }
                                   }
-
                                   @Override
                                   public void onBitmapFailed(Drawable errorDrawable) {
                                   }
@@ -180,6 +182,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         OnItemClickListener onItemClickListener;
         Button save;
         ImageButton bookmark;
+        ViewModel newsViewMode;
         public MyViewHolder(@NonNull View itemView,OnItemClickListener onItemClickListener) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -192,6 +195,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             save=itemView.findViewById(R.id.savetomemory);
             this.onItemClickListener=onItemClickListener;
             Share=itemView.findViewById(R.id.share_img);
+            newsViewMode= ViewModelProviders.of((FragmentActivity) context).get(ViewModel.class);
         }
 
         @Override

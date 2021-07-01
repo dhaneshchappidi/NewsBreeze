@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Downloaded_News"
+    tools:context=".view.Downloaded_News"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,22 +30,12 @@
         android:layout_centerHorizontal="true"
         />
     </RelativeLayout>
-    <SearchView
-        android:id="@+id/searchview"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:queryHint="Search"
-        android:iconifiedByDefault="false"
-        android:background="@drawable/background"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_below="@+id/title">
-    </SearchView>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:layout_below="@+id/searchview">
+        android:layout_below="@+id/save"
+        android:layout_marginTop="30dp">
     </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

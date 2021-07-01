@@ -1,8 +1,10 @@
-package com.example.dhaneshchappidi.newsbreeze;
+package com.example.dhaneshchappidi.newsbreeze.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,20 +26,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dhaneshchappidi.newsbreeze.API.ApiInterface;
-import com.example.dhaneshchappidi.newsbreeze.API.Apiclient;
-import com.example.dhaneshchappidi.newsbreeze.Adapter.NewsAdapter;
+import com.example.dhaneshchappidi.newsbreeze.adapter.NewsAdapter;
 import com.example.dhaneshchappidi.newsbreeze.model.Article;
-import com.example.dhaneshchappidi.newsbreeze.model.News;
+import com.example.dhaneshchappidi.newsbreeze.R;
+import com.example.dhaneshchappidi.newsbreeze.response.ArticleResponse;
+import com.example.dhaneshchappidi.newsbreeze.viewmodel.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static androidx.core.app.ActivityCompat.requestPermissions;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final int PERMISSION_REQEST_CODE =1 ;
@@ -55,11 +51,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Spinner Spinner;
     String[] category = {"business","entertainment","general","health","scince","sports","technology"};
 
+    ViewModel articleViewMode;
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode)
-        {
+        switch (requestCode) {
             case PERMISSION_REQEST_CODE:
             {
                 if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
@@ -67,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
                 else {
                     Toast.makeText(this,"permission denied",Toast.LENGTH_LONG).show();
-
                 }
             }
                 break;
@@ -83,12 +79,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         download=(ImageView)findViewById(R.id.downloaded);
         tf=Typeface.createFromAsset(getAssets(), "METALORD.TTF");
         title.setTypeface(tf);
+        progressBar=(ProgressBar)findViewById(R.id.progress);
+        progressBar.setVisibility(View.VISIBLE);
         Spinner=(Spinner)findViewById(R.id.spinner);
         Spinner.setOnItemSelectedListener(this);
-        progressBar=(ProgressBar)findViewById(R.id.progress);
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,category);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner.setAdapter(aa);
+        articleViewMode= ViewModelProviders.of(this).get(ViewModel.class);
 
         Bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(MainActivity.this,Downloaded_News.class);
+                Intent i=new Intent(MainActivity.this, Downloaded_News.class);
                 startActivity(i);
             }
         });
@@ -129,46 +127,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,new String[]{
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
-
             },PERMISSION_REQEST_CODE);
-
         }
     }
-    public void LoadJson(String keyword,String catagory){
-        ApiInterface apiInterface = Apiclient.getApiClient().create(ApiInterface.class);
-
-        String country ="in";
-
-        Call<News> call;
-        call=apiInterface.getNews(keyword,country,API_KEY,catagory,"publishedAt");
-        call.enqueue(new Callback<News>() {
-            @Override
-            public void onResponse(Call<News> call, Response<News> response) {
-                if (response.isSuccessful() && response.body().getArticles() != null){
-                    if (!articles.isEmpty()){
-                        articles.clear();
-                    }
-
-                    articles = response.body().getArticles();
-
-                    Integer total=response.body().getTotalResults();
-                    newsAdapter = new NewsAdapter(articles, MainActivity.this,total);
+    public void LoadJson(String keyword,String category){
+            articleViewMode.getArticleResponseLiveData(keyword,"in",API_KEY,category,"publishedAt").observe(this, new Observer<ArticleResponse>() {
+                @Override
+                public void onChanged(ArticleResponse articleResponse) {
                     progressBar.setVisibility(View.GONE);
-                    recyclerView.setAdapter(newsAdapter);
-                    newsAdapter.notifyDataSetChanged();
-                    initListener();
-                } else {
-                    Toast.makeText(MainActivity.this,"No result",Toast.LENGTH_SHORT).show();
+                    articles.clear();
+                    if (articleResponse != null && articleResponse.getArticles() != null
+                            && !articleResponse.getArticles().isEmpty()) {
+                        List<Article> articleList = articleResponse.getArticles();
+                        articles.addAll(articleList);
+                        newsAdapter = new NewsAdapter(articles, MainActivity.this);
+                        newsAdapter.notifyDataSetChanged();
+                        recyclerView.setAdapter(newsAdapter);
+                        Clickevent();
+                    }
                 }
-            }
-
-            @Override
-            public void onFailure(Call<News> call, Throwable t) {
-            }
-        });
-
+            });
     }
-    private void initListener(){
+    private void Clickevent(){
         newsAdapter.setOnItemClickListener(new NewsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -188,14 +168,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        progressBar.setVisibility(View.VISIBLE);
         Toast.makeText(MainActivity.this,category[i]+ " NEWS",Toast.LENGTH_SHORT).show();
         LoadJson("",category[i]);
-        progressBar.setVisibility(View.VISIBLE);
-
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

@@ -1,8 +1,9 @@
-package com.example.dhaneshchappidi.newsbreeze;
+package com.example.dhaneshchappidi.newsbreeze.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
 import android.content.Intent;
@@ -16,6 +17,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.dhaneshchappidi.newsbreeze.Dateformate;
+import com.example.dhaneshchappidi.newsbreeze.R;
+import com.example.dhaneshchappidi.newsbreeze.model.News;
+import com.example.dhaneshchappidi.newsbreeze.viewmodel.ViewModel;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -31,7 +37,7 @@ public class Second_Activity extends AppCompatActivity {
     ImageView backbutton;
     Button more,Save;
     String URL;
-    DBHelper mydb;
+    ViewModel newsViewMode;
 
     private static final int PERMISSION_REQEST_CODE =1 ;
     @Override
@@ -77,7 +83,7 @@ public class Second_Activity extends AppCompatActivity {
         Author=(TextView)findViewById(R.id.author);
         Content=(TextView)findViewById(R.id.content);
         Bookmark=(ImageView)findViewById(R.id.bookmark);
-        mydb=new DBHelper(this);
+        newsViewMode= ViewModelProviders.of(this).get(ViewModel.class);
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +109,7 @@ public class Second_Activity extends AppCompatActivity {
         Picasso.with(this)
                 .load(Img)
                 .into(newsimage);
-        String date_formate=Dateformate.Dateformate(date);
+        String date_formate= Dateformate.Dateformate(date);
         Date.setText(date_formate);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,8 +120,9 @@ public class Second_Activity extends AppCompatActivity {
         Bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mydb.insertNews(author,Title,Descriptioni,Url,Img,date,content,null,"Bookmark");
-                Toast.makeText(Second_Activity.this,"Bookmarked successfully",Toast.LENGTH_SHORT).show();
+                News news=new News(author,Title,Descriptioni,Url,Img,date,content,null,"Bookmark");
+                newsViewMode.insert(news);
+                Toast.makeText(Second_Activity.this,"Added successfully",Toast.LENGTH_LONG).show();
             }
         });
         Save.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +145,8 @@ public class Second_Activity extends AppCompatActivity {
                                       String name = date_time + ".PNG";
                                       File file = new File(rootdata, name);
                                       OutputStream out;
-                                      mydb.insertNews(author,Title,Descriptioni,Url,Img,date,content,date_time,"Download");
+                                      News news=new News(author,Title,Descriptioni,Url,Img,date,content,date_time,"Download");
+                                      newsViewMode.insert(news);
                                       Toast.makeText(Second_Activity.this,"News downloaded",Toast.LENGTH_LONG).show();
                                       try {
                                           out=new FileOutputStream(file);

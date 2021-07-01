@@ -10,11 +10,11 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Bookmarked_news"></activity>
-        <activity android:name=".Offline_News" />
-        <activity android:name=".Downloaded_News" />
-        <activity android:name=".Second_Activity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.Bookmarked_news"></activity>
+        <activity android:name=".view.Offline_News" />
+        <activity android:name=".view.Downloaded_News" />
+        <activity android:name=".view.Second_Activity" />
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
