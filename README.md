@@ -31,6 +31,7 @@ NewsBreeze requires the following permissions:
 - [Retrofit](http://square.github.io/retrofit/) For sending network requests and parsing JSON data.
 - [Picasso](https://square.github.io/picasso/) Loading and caching images.
 - **Room** is a database layer on top of an SQLite database.
+- **Lifecycle**
 
 ### Screenshots
 </br>
