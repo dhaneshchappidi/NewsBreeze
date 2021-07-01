@@ -44,38 +44,12 @@ NewsBreeze requires the following permissions:
 
 
 ### Screenshots
-</br>
-<div align="center">
-   <table align="center" border="0" >
-  <tr>
-    <td>
-<img width="360"
-src="https://user-images.githubusercontent.com/52503391/122374994-76279080-cf80-11eb-9cc8-1b5339b6da5d.jpg"/>
-       <td> <img width="360"
-src="https://user-images.githubusercontent.com/52503391/122375143-97887c80-cf80-11eb-891f-2d0fe48e014d.jpg"/></td>
-       <td><img width="360"
-src="https://user-images.githubusercontent.com/52503391/122375067-86d80680-cf80-11eb-9eaa-ec64ba9be941.jpg"/>
-    </td>
-  </table>
-  </div>
-</br>
-<div align="center">
-  <table align="center" border="0" >
-  <tr>
-    <td> <img width="360"
-src="https://user-images.githubusercontent.com/52503391/122375218-a53e0200-cf80-11eb-8ae6-7e63ef535727.jpg"/></td>
-     <td> <img width="360"
-src="https://user-images.githubusercontent.com/52503391/122374778-47111f00-cf80-11eb-8a6d-84baaf5146e0.jpg"/></td>
-     <td> <img width="360"
-src="https://user-images.githubusercontent.com/52503391/122374862-58f2c200-cf80-11eb-810c-1fb140356b6b.jpg"/></td>
-  </tr>
-</table>
-  </div>
-</br>
+| Main Screen | Full article |  Categories |
+|:-:|:-:|:-:|
+|(https://user-images.githubusercontent.com/52503391/124110016-667e7080-da85-11eb-924a-9893beb06636.JPG) | (https://user-images.githubusercontent.com/52503391/124110021-68483400-da85-11eb-817c-89184397d149.JPG) | (https://user-images.githubusercontent.com/52503391/124110027-69796100-da85-11eb-9103-8a8a41cbdf61.JPG) |
+| Movie Details | Trailers |  Reviews |
+| ![4](screenshots/Screenshot_3.jpg?raw=true) | ![5](screenshots/Screenshot_5.jpg?raw=true) | ![6](screenshots/Screenshot_4.jpg?raw=true) |
 
-<h3 align="center">Download APK</h3>
-<p align="center">
-<a href='https://github.com/dhaneshchappidi/NewsBreeze/raw/master/app-release.apk'><img alt='Download APK' width="100px" height="100px" src='https://www.oiml.org/en/ressources/icons/download-button.jpg/image'/></a>
-</p></a>
+
 
 
